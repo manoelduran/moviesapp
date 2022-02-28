@@ -11,4 +11,8 @@ interface Movie {
     popularity: number;
     overview: string;
     poster_path: string;
-}
+};
+
+interface MovieParams {
+    id: string;
+};

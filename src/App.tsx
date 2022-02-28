@@ -2,13 +2,16 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import { GlobalStyle } from './styles/global';
-import { Home } from './pages/Home';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Rotas from './router';
 function App() {
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Home />
+      <Router>
+        <Rotas />
+      </Router>
     </ThemeProvider>
   );
 }
