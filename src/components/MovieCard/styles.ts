@@ -1,10 +1,14 @@
+import { darken } from 'polished';
 import styled from 'styled-components';
 export const Container = styled.div`
 margin-top: 30px;
 border-radius: 0 2rem 2rem 0;
 width: 50%;
 height: 200px;
-background-color: lightblue;
+background: ${({theme}) => theme.gray_light};
+&:hover {
+    background: ${({ theme }) => darken(0.05, theme.hover_gray_light)};
+  }
 `;
 
 export const ButtonCard = styled.button`
@@ -13,6 +17,7 @@ background-color: transparent;
 display: flex;
 flex-direction: row;
 align-items: flex-start;
+
 `;
 
 export const Title = styled.h1`

@@ -7,7 +7,9 @@ import {
     Container,
     Header,
     Title,
-    Content
+    Content,
+    MessageContainer,
+    Message
 } from './styles';
 import { Loading } from '../../components/Loading';
 
@@ -37,8 +39,7 @@ export function Home() {
         <Container>
             <Header>
                 <Title>
-                    Welcome.
-                    Know about millions of movies here,
+                    Welcome.   Know about millions of movies here,
                     Startapp MDB!
                 </Title>
                 <SearchBox
@@ -59,9 +60,9 @@ export function Home() {
                     }
                 </Content>
                 :
-                <Content>
-                    <h1 >Why you don't try tape a movie?</h1>
-                </Content>
+                <MessageContainer>
+                    <Message >Why you don't try tape a movie?</Message>
+                </MessageContainer>
             }
         </Container>
     );
