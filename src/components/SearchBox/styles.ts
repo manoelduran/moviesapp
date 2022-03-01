@@ -1,22 +1,19 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-width: 100%;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 1.5rem;
+margin-top: 2.5rem;
 `;
 
 export const Input = styled.input`
-font-size: 25px;
-background: #fff url("/search.png") no-repeat 97% 50%;
+width: 800px;
+height: 30px;
 display: flex;
 align-items: center;
 justify-content: center;
 
 ::placeholder {
+    justify-content: center;
+    align-items: center;
         color: #1f2226;
        padding: 0.5rem;
    }

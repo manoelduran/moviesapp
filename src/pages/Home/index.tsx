@@ -50,17 +50,23 @@ export function Home() {
                     onChange={(search) => setSearch(search)}
                 />
             </Header>
-            <Content>
-                {
-                    movies.map((movie: Movie) => (
-                        <MovieCard
-                            data={movie}
-                            key={movie.id}
-                            onClick={() => handleSelectedMovie(movie)}
-                        />
-                    ))
-                }
+            {search.length > 0 ?
+                <Content>
+                    {
+                        movies.map((movie: Movie) => (
+                            <MovieCard
+                                data={movie}
+                                key={movie.id}
+                                onClick={() => handleSelectedMovie(movie)}
+                            />
+                        ))
+                    }
+                </Content>
+                :
+                <Content>
+                    <h1 style={{width: 100, alignSelf: 'center', justifyContent: 'center'}} >Why you don't try tape a movie?</h1>
             </Content>
+                }
         </Container>
     );
 }

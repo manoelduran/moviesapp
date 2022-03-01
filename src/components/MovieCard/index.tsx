@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Poster, Title, ButtonCard } from './styles';
+import { Container, Poster, Title, ButtonCard, Details, Description } from './styles';
 
 interface MovieCardProps {
   data: Movie;
@@ -10,8 +10,11 @@ export function MovieCard({ data, onClick }: MovieCardProps) {
   return (
     <Container  >
       <ButtonCard onClick={onClick}>
-        <Title>{data.title}</Title>
         <Poster src={`https://image.tmdb.org/t/p/w220_and_h330_face${data.poster_path}`} />
+        <Details>
+        <Title>{data.title}</Title>
+        <Description>Popularity:  {data.popularity} </Description>
+        </Details>
       </ButtonCard>
     </Container>
   );
