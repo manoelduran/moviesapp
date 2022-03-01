@@ -9,6 +9,7 @@ import {
     Title,
     Content
 } from './styles';
+import { Loading } from '../../components/Loading';
 
 export function Home() {
     const [movies, setMovies] = useState<Movie[]>([] as Movie[]);
@@ -16,27 +17,22 @@ export function Home() {
     const navigate = useNavigate();
     const [search, setSearch] = useState('');
     async function fetchMovies(search: string) {
-        const response = await api.searchMovies(search);
-        setMovies(response)
+        try {
+            setLoading(true)
+            const response = await api.searchMovies(search);
+            setMovies(response);
+        } catch (err) {
+            console.log(err)
+        } finally {
+            setLoading(false)
+        }
     };
     function handleSelectedMovie(movie: Movie) {
-
         navigate(`/${String(movie.id)}`);
     }
     useEffect(() => {
-        if (search) {
-            setLoading(true)
-        }
-        try {
-            fetchMovies(search)
-        }
-        catch (error) {
-            return console.log(error);
-        }
-        finally {
-            setLoading(false)
-        }
-    }, [search, loading])
+        fetchMovies(search)
+    }, [search])
     return (
         <Container>
             <Header>
@@ -52,7 +48,7 @@ export function Home() {
             </Header>
             {search.length > 0 ?
                 <Content>
-                    {
+                    {loading ? <Loading /> :
                         movies.map((movie: Movie) => (
                             <MovieCard
                                 data={movie}
@@ -64,9 +60,9 @@ export function Home() {
                 </Content>
                 :
                 <Content>
-                    <h1 style={{width: 100, alignSelf: 'center', justifyContent: 'center'}} >Why you don't try tape a movie?</h1>
-            </Content>
-                }
+                    <h1 >Why you don't try tape a movie?</h1>
+                </Content>
+            }
         </Container>
     );
 }
