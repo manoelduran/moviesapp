@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Container, Input } from './styles';
 
 
 interface SearchBoxProps {
   value: string;
   onChange: (event: string) => void;
-}
+};
 
 export function SearchBox({ value, onChange }: SearchBoxProps) {
   const [displayValue, setDisplayValue] = useState(value);
@@ -16,14 +16,15 @@ export function SearchBox({ value, onChange }: SearchBoxProps) {
       window.clearTimeout(timeoutId.current as unknown as number);
       timeoutId.current = window.setTimeout(() => fn(...args), ms);
     };
-    return debouncedFn
+    return debouncedFn;
   };
+
   const debounceChange = Debounce(onChange, 2000);
 
   function handleSearchBox(event: any) {
     setDisplayValue(event.target.value);
     debounceChange(event.target.value);
-  }
+  };
 
   return (
     <Container>

@@ -1,4 +1,7 @@
-import { Container, Text } from "./styles";
+import {
+  Container,
+  Text
+} from "./styles";
 export function Loading() {
   return (
     <Container>

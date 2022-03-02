@@ -7,6 +7,7 @@ import {
     Title,
     Poster,
     Content,
+    Label,
     Overview,
     Details
 } from './styles';
@@ -15,9 +16,9 @@ export function Movie() {
     const { id } = useParams() as unknown as MovieParams;
     const [movie, setMovie] = useState<Movie>({} as Movie);
     async function fetchMovie(id: string) {
-        const result = await searchMovie(id)
-        console.log('AQI', result)
-        setMovie(result)
+        const result = await searchMovie(id);
+        console.log('AQI', result);
+        setMovie(result);
     }
     useEffect(() => {
         fetchMovie(id);
@@ -32,6 +33,7 @@ export function Movie() {
             <Content>
                 <Poster src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`} />
                 <Details>
+                    <Label>Overview:</Label>
                     <Overview>
                         {movie.overview}
                     </Overview>
@@ -39,4 +41,4 @@ export function Movie() {
             </Content>
         </Container>
     );
-}
+};

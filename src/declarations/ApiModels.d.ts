@@ -1,9 +1,3 @@
-interface User {
-    id: string;
-    name: string;
-    avatar: string;
-};
-
 interface Movie {
     id: number;
     title: string;

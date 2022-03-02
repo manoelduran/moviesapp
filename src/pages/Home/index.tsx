@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { MovieCard } from '../../components/MovieCard';
 import { FiArrowUp } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
+import { Loading } from '../../components/Loading';
+import { useTheme } from 'styled-components';
 import { SearchBox } from '../../components/SearchBox';
 import * as api from '../../services/api';
 import {
@@ -13,8 +15,7 @@ import {
     Message,
     ContentContainer
 } from './styles';
-import { Loading } from '../../components/Loading';
-import { useTheme } from 'styled-components';
+
 
 export function Home() {
     const theme = useTheme();
@@ -24,21 +25,21 @@ export function Home() {
     const [search, setSearch] = useState('');
     async function fetchMovies(search: string) {
         try {
-            setLoading(true)
+            setLoading(true);
             const response = await api.searchMovies(search);
             setMovies(response);
         } catch (err) {
-            console.log(err)
+            return console.log(err);
         } finally {
-            setLoading(false)
-        }
+            setLoading(false);
+        };
     };
     function handleSelectedMovie(movie: Movie) {
         navigate(`/${String(movie.id)}`);
-    }
+    };
     useEffect(() => {
-        fetchMovies(search)
-    }, [search])
+        fetchMovies(search);
+    }, [search]);
     return (
         <Container>
             <Header>
@@ -75,4 +76,4 @@ export function Home() {
             </ContentContainer>
         </Container>
     );
-}
+};

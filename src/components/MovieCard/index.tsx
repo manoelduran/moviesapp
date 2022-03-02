@@ -1,10 +1,19 @@
 import React from 'react';
-import { Container, Poster, Title, ButtonCard, Details, Description, DescriptionContainer, Label } from './styles';
+import {
+  Container,
+  Poster,
+  Title,
+  ButtonCard,
+  Details,
+  Description,
+  DescriptionContainer,
+  Label
+} from './styles';
 
 interface MovieCardProps {
   data: Movie;
   onClick: () => void;
-}
+};
 
 export function MovieCard({ data, onClick }: MovieCardProps) {
   return (
@@ -15,11 +24,10 @@ export function MovieCard({ data, onClick }: MovieCardProps) {
           <Title>{data.title}</Title>
           <DescriptionContainer>
             <Label>Popularity:</Label>
-
             <Description>{data.popularity} </Description>
           </DescriptionContainer>
         </Details>
       </ButtonCard>
     </Container>
   );
-}
+};

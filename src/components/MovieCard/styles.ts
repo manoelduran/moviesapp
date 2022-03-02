@@ -1,5 +1,6 @@
 import { darken } from 'polished';
 import styled from 'styled-components';
+
 export const Container = styled.div`
 width: 50%;
 margin-top: 30px;
@@ -9,7 +10,10 @@ height: 200px;
 background: ${({ theme }) => theme.gray_light};
 &:hover {
     background: ${({ theme }) => darken(0.05, theme.hover_gray_light)};
-  }
+  };
+  @media screen and (max-width: 520px){
+width: 75%;
+};
 `;
 
 export const ButtonCard = styled.button`
@@ -40,6 +44,7 @@ export const Poster = styled.img`
 width: 100px;
 height: 200px;
 `;
+
 export const DescriptionContainer = styled.div`
 width: 100%;
 display: flex;
@@ -52,7 +57,6 @@ export const Label = styled.span`
  margin-top: 10px;
 font-size: 0.8rem;
 padding-left: 15px;
-
 color: ${({ theme }) => theme.black};
  `;
 
