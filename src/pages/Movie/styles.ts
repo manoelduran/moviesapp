@@ -8,12 +8,12 @@ height: 100%;
 
 export const Header = styled.div`
  width: 100%;
- height: 150px;
- background: ${({ theme }) => theme.purple};
- padding: 50px 25px;
- display: flex;
- align-items: center;
-
+ height: 200px;
+background: ${({ theme }) => theme.purple};
+padding: 30px 25px;
+display: flex ;
+justify-content: center;
+align-items: center;
  `;
 export const Title = styled.h1`
 font-size: 1.5rem;
@@ -23,7 +23,7 @@ font-size: 1.5rem;
 
 export const Poster = styled.img`
 margin-left: 30px;
-margin-top: 7rem;
+
 border-radius: 50%;
 border: 5px solid ${({ theme }) => theme.black};
 &:hover {
@@ -33,11 +33,17 @@ border: 5px solid ${({ theme }) => theme.black};
 
 export const Content = styled.div`
 width: 100%;
+margin-top: 7rem;
 display: flex;
-justify-content: space-between;
+align-items: center;
+
 `;
 
-export const Popularity = styled.p``;
-export const Overview = styled.p``;
+export const Overview = styled.p`
+margin-left: 30px;
+text-align: center;
+font-size: 0.9rem;
+color: ${({ theme }) => theme.black};
+`;
 
 export const Details = styled.div``;

@@ -10,7 +10,8 @@ import {
     Title,
     Content,
     MessageContainer,
-    Message
+    Message,
+    ContentContainer
 } from './styles';
 import { Loading } from '../../components/Loading';
 import { useTheme } from 'styled-components';
@@ -50,24 +51,28 @@ export function Home() {
                     onChange={(search) => setSearch(search)}
                 />
             </Header>
-            {search.length > 0 ?
-                <Content>
-                    {loading ? <Loading /> :
-                        movies.map((movie: Movie) => (
-                            <MovieCard
-                                data={movie}
-                                key={movie.id}
-                                onClick={() => handleSelectedMovie(movie)}
-                            />
-                        ))
-                    }
-                </Content>
-                :
-                <MessageContainer>
-                    <Message >Why don't you try to search a movie?</Message>
-                    <FiArrowUp size={200}  color={theme.hover_purple} />
-                </MessageContainer>
-            }
+            <ContentContainer>
+                {search.length > 0 ?
+                    <>
+                        {loading ? <Loading /> :
+                            <Content>
+                                {movies.map((movie: Movie) => (
+                                    <MovieCard
+                                        data={movie}
+                                        key={movie.id}
+                                        onClick={() => handleSelectedMovie(movie)}
+                                    />
+                                ))}
+                            </Content>
+                        }
+                    </>
+                    :
+                    <MessageContainer>
+                        <Message >Why don't you try to search a movie?</Message>
+                        <FiArrowUp size={200} color={theme.hover_purple} />
+                    </MessageContainer>
+                }
+            </ContentContainer>
         </Container>
     );
 }

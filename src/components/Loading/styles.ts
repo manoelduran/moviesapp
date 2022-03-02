@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-width: 100vw;
+width: 100%;
 height: 50vh;
 margin-top: 2rem;
 display: flex;
@@ -12,5 +12,5 @@ justify-content: center;
 export const Text = styled.h1`
 font-size: 2rem;
 text-align: center;
-color: lightblue;
+color: ${({theme}) => theme.hover_purple};
 `;

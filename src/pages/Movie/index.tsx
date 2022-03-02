@@ -7,7 +7,6 @@ import {
     Title,
     Poster,
     Content,
-    Popularity,
     Overview,
     Details
 } from './styles';
@@ -33,9 +32,6 @@ export function Movie() {
             <Content>
                 <Poster src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`} />
                 <Details>
-                    <Popularity>
-                        {movie.popularity}
-                    </Popularity>
                     <Overview>
                         {movie.overview}
                     </Overview>
