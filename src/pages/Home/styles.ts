@@ -27,10 +27,12 @@ export const Content = styled.div`
 export const MessageContainer = styled.div`
 margin-top: 10rem;
 display: flex;
+flex-direction: column;
 align-items: center;
 justify-content: center;
 `;
 
 export const Message = styled.p`
-
+font-size: 2rem;
+color: ${({theme}) => theme.hover_purple};
  `;

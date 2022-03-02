@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MovieCard } from '../../components/MovieCard';
+import { FiArrowUp } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
 import { SearchBox } from '../../components/SearchBox';
 import * as api from '../../services/api';
@@ -12,8 +13,10 @@ import {
     Message
 } from './styles';
 import { Loading } from '../../components/Loading';
+import { useTheme } from 'styled-components';
 
 export function Home() {
+    const theme = useTheme();
     const [movies, setMovies] = useState<Movie[]>([] as Movie[]);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -61,7 +64,8 @@ export function Home() {
                 </Content>
                 :
                 <MessageContainer>
-                    <Message >Why you don't try tape a movie?</Message>
+                    <Message >Why don't you try to search a movie?</Message>
+                    <FiArrowUp size={200}  color={theme.hover_purple} />
                 </MessageContainer>
             }
         </Container>
