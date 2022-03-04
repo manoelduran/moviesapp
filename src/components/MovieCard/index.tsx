@@ -17,15 +17,14 @@ interface MovieCardProps {
 
 export function MovieCard({ data, onClick }: MovieCardProps) {
   return (
-    <Container  >
+    <Container imgUrl={`https://image.tmdb.org/t/p/w350_and_h350_face${data.poster_path}`}  >
       <ButtonCard onClick={onClick}>
-        <Poster src={`https://image.tmdb.org/t/p/w220_and_h330_face${data.poster_path}`} />
         <Details>
-          <Title>{data.title}</Title>
           <DescriptionContainer>
             <Label>Popularity:</Label>
             <Description>{data.popularity} </Description>
           </DescriptionContainer>
+          <Title>{data.title}</Title>
         </Details>
       </ButtonCard>
     </Container>

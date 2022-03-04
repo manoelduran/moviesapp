@@ -11,8 +11,6 @@ import {
     Header,
     Title,
     Content,
-    MessageContainer,
-    Message,
     ContentContainer
 } from './styles';
 
@@ -24,7 +22,9 @@ export function Home() {
     const navigate = useNavigate();
     const [search, setSearch] = useState('');
     async function fetchMovies(search: string) {
+
         try {
+
             setLoading(true);
             const response = await api.searchMovies(search);
             setMovies(response);
@@ -38,7 +38,12 @@ export function Home() {
         navigate(`/${String(movie.id)}`);
     };
     useEffect(() => {
-        fetchMovies(search);
+        if (search.length > 0) {
+            fetchMovies(search);
+        } else {
+            setSearch('Batman')
+        }
+
     }, [search]);
     return (
         <Container>
@@ -53,8 +58,6 @@ export function Home() {
                 />
             </Header>
             <ContentContainer>
-                {search.length > 0 ?
-                    <>
                         {loading ? <Loading /> :
                             <Content>
                                 {movies.map((movie: Movie) => (
@@ -66,13 +69,6 @@ export function Home() {
                                 ))}
                             </Content>
                         }
-                    </>
-                    :
-                    <MessageContainer>
-                        <Message >Why don't you try to search a movie?</Message>
-                        <FiArrowUp size={200} color={theme.hover_purple} />
-                    </MessageContainer>
-                }
             </ContentContainer>
         </Container>
     );
