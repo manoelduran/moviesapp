@@ -5,8 +5,8 @@ interface BackgroundImageProps {
 }
 
 export const Container = styled.div<BackgroundImageProps>`
-width: 350px;
-height: 350px;
+width: 220px;
+height: 330px;
 margin-top: 30px;
 background-image: url(${(props)=>props.imgUrl}); 
   @media screen and (max-width: 520px){
@@ -18,20 +18,21 @@ export const ButtonCard = styled.a`
 width: 100%;
 `;
 export const Details = styled.div`
-
 width: 100%;
+height: 100% ;
 display: flex;
 flex-direction: column;
+justify-content: space-between ;
 `;
 export const Title = styled.h1`
-font-size: 1rem;
-text-align: start;
-color: ${({ theme }) => theme.black};
+width:100%;
+font-size: 1.5rem;
+align-self: left ;
+text-align: left;
+color: ${({ theme }) => theme.hover_purple};
 `;
 
-export const Poster = styled.img`
-width: 100%;
-`;
+
 
 export const DescriptionContainer = styled.div`
 width: 100%;
@@ -39,13 +40,8 @@ display: flex;
 flex-direction: row;
 `;
 
-export const Label = styled.span`
-font-size: 0.8rem;
-color: ${({ theme }) => theme.black};
- `;
-
 export const Description = styled.p`
-font-size: 0.9rem;
+font-size: 1.2rem;
 color: ${({ theme }) => theme.hover_purple};
 `;
 

@@ -34,11 +34,10 @@ justify-content: center;
 `;
 export const Content = styled.div`
 width: 100%;
-height: 100% ;
-padding: 20px 20px;
+height: 100vh ;
+padding: 15px 15px ;
 display: grid ;
-gap: 15px ;
-grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(5, auto);
 @media screen and (max-width: 1250px){
 padding: 30px 0px 0px 0px;
 display: flex;

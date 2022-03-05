@@ -5,6 +5,8 @@ interface Movie {
     popularity: number;
     overview: string;
     poster_path: string;
+    original_language: string;
+    release_date: string;
 };
 
 interface MovieParams {

@@ -1,13 +1,11 @@
 import React from 'react';
 import {
   Container,
-  Poster,
   Title,
   ButtonCard,
   Details,
   Description,
   DescriptionContainer,
-  Label
 } from './styles';
 
 interface MovieCardProps {
@@ -17,11 +15,10 @@ interface MovieCardProps {
 
 export function MovieCard({ data, onClick }: MovieCardProps) {
   return (
-    <Container imgUrl={`https://image.tmdb.org/t/p/w350_and_h350_face${data.poster_path}`}  >
+    <Container imgUrl={`https://image.tmdb.org/t/p/w220_and_h330_face${data.poster_path}`}  >
       <ButtonCard onClick={onClick}>
         <Details>
           <DescriptionContainer>
-            <Label>Popularity:</Label>
             <Description>{data.popularity} </Description>
           </DescriptionContainer>
           <Title>{data.title}</Title>

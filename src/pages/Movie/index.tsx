@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom';
 import { searchMovie } from '../../services/api';
 import {
     Container,
-    Header,
     Title,
-    Poster,
     Content,
-    Label,
+    Poster,
     Overview,
-    Details
+    Details,
+    Info,
+    NameContainer
 } from './styles';
 
 export function Movie() {
@@ -25,19 +25,29 @@ export function Movie() {
     }, [id])
     return (
         <Container>
-            <Header>
-                <Title>
-                    {movie.title}
-                </Title>
-            </Header>
             <Content>
-                <Poster src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`} />
-                <Details>
-                    <Label>Overview:</Label>
-                    <Overview>
-                        {movie.overview}
-                    </Overview>
-                </Details>
+                <Info>
+                    <Title>
+                        {movie.popularity}
+                    </Title>
+                    <NameContainer>
+                        <Title>
+                            {movie.title}
+                        </Title>
+                        <Title>
+                            {movie.release_date}
+                        </Title>
+                    </NameContainer>
+                    <Title>
+                        {movie.original_language}
+                    </Title>
+                    <Details>
+                        <Overview>
+                            {movie.overview}
+                        </Overview>
+                    </Details>
+                </Info>
+                <Poster src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
             </Content>
         </Container>
     );
