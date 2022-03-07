@@ -30,11 +30,12 @@ export function Movie() {
         console.log('AQI', result);
         setMovie(result);
     }
-    function handleGoBack(){
-       navigate(-1)
+    function handleGoBack() {
+        navigate(-1)
     }
     useEffect(() => {
         fetchMovie(id);
+
     }, [id])
     return (
         <Container>
@@ -60,7 +61,7 @@ export function Movie() {
                         </Title>
                         <DateInfo>
                             <ReleaseDate>
-                                {movie.release_date}
+                                {movie.release_date && new Intl.DateTimeFormat('pt-Br',{month:'2-digit', year:'2-digit'}).format(new Date(movie.release_date))}
                             </ReleaseDate>
                             <Language>
                                 {movie.original_language}

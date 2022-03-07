@@ -12,5 +12,5 @@ justify-content: center;
 export const Text = styled.h1`
 font-size: 2rem;
 text-align: center;
-color: ${({ theme }) => theme.hover_purple};
+color: ${({ theme }) => theme.white_details};
 `;

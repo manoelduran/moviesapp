@@ -9,13 +9,13 @@ export const Header = styled.div`
  width: 100%;
  height: 200px;
 background: ${({ theme }) => theme.black};
-padding: 30px 25px;
+padding: 30px 0px;
 display: flex ;
 flex-direction: column;
 align-items: center;
  `;
 export const Title = styled.h1`
-color: ${({ theme }) => theme.white_details};
+color: ${({ theme }) => theme.red};
 @media screen and (max-width: 520px){
   text-align: center;
 font-size: 1.5rem;
@@ -33,10 +33,9 @@ align-items: center;
 justify-content: center;
 `;
 export const Content = styled.div`
-width: 100vw;
-height: 100vh ;
-margin-left: 40px ;
-display: grid ;
-grid-template-columns: repeat(5, auto);
 
+height: 100% ;
+display: grid ;
+gap: 10px ;
+grid-template-columns: repeat(5, auto);
  `;

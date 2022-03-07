@@ -14,7 +14,7 @@ const theme = {
     hover_danger: '#D73754',
     hover_gray_medium: '#7E7E86',
     hover_gray_light: '#CECECE',
-
+    red: 'red'
 };
 
 export default theme;
