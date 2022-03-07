@@ -21,7 +21,7 @@ export function MovieCard({ data, onClick }: MovieCardProps) {
           <DescriptionContainer>
             <Description>{data.popularity} </Description>
           </DescriptionContainer>
-          <Title>{data.title}</Title>
+          {/* <Title>{data.title}</Title> */}
         </Details>
       </ButtonCard>
     </Container>

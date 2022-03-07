@@ -1,6 +1,7 @@
 const theme = {
-    black: '#29292E',
+    black: 'black',
     shadow: '#050206',
+    rate: '#ffe400',
     purple: '#835AFD',
     gray_dark: '#737380',
     gray_medium: '#A8A8B3',
@@ -13,6 +14,7 @@ const theme = {
     hover_danger: '#D73754',
     hover_gray_medium: '#7E7E86',
     hover_gray_light: '#CECECE',
+
 };
 
 export default theme;

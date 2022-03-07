@@ -49,8 +49,7 @@ export function Home() {
         <Container>
             <Header>
                 <Title>
-                    Welcome.   Know about millions of movies here,
-                    Startapp MDB!
+                    Startflix
                 </Title>
                 <SearchBox
                     value={search}
@@ -58,17 +57,17 @@ export function Home() {
                 />
             </Header>
             <ContentContainer>
-                        {loading ? <Loading /> :
-                            <Content>
-                                {movies.map((movie: Movie) => (
-                                    <MovieCard
-                                        data={movie}
-                                        key={movie.id}
-                                        onClick={() => handleSelectedMovie(movie)}
-                                    />
-                                ))}
-                            </Content>
-                        }
+                {loading ? <Loading /> :
+                    <Content>
+                        {movies.map((movie: Movie) => (
+                            <MovieCard
+                                data={movie}
+                                key={movie.id}
+                                onClick={() => handleSelectedMovie(movie)}
+                            />
+                        ))}
+                    </Content>
+                }
             </ContentContainer>
         </Container>
     );

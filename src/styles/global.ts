@@ -9,12 +9,11 @@ export const GlobalStyle = createGlobalStyle`
   #root, body, html {
     height: 100%;
     width: 100%;
-    max-width: 1440px;
   };
 
   body {
-    background: ${({ theme }) => theme.white_background};
-    color: ${({ theme }) => theme.black};
+    background: ${({ theme }) => theme.black};
+    color: ${({ theme }) => theme.white_details};
   };
 
 body , input , button , textarea {

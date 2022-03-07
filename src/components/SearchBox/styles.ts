@@ -12,13 +12,13 @@ border-radius: 5px;
 align-items: center;
 padding: 0.5rem;
 justify-content: center;
-background: ${({ theme }) => theme.purple};
-color: ${({ theme }) => theme.white_details};
+background: ${({ theme }) => theme.white_details};
+color: ${({ theme }) => theme.black};
 border: 1px solid ${({ theme }) => theme.border};
 ::placeholder {
     justify-content: center;
     align-items: center;
-        color: ${({ theme }) => theme.white_details};
+        color: ${({ theme }) => theme.black};
    };
    @media screen and (max-width: 800px){
     width: 600px;

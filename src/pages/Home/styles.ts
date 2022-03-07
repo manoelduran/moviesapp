@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 width: 100%;
-height: 100vh ;
+height: 100vh;
 `;
 
 export const Header = styled.div`
  width: 100%;
  height: 200px;
-background: ${({ theme }) => theme.purple};
+background: ${({ theme }) => theme.black};
 padding: 30px 25px;
 display: flex ;
 flex-direction: column;
@@ -33,16 +33,10 @@ align-items: center;
 justify-content: center;
 `;
 export const Content = styled.div`
-width: 100%;
+width: 100vw;
 height: 100vh ;
-padding: 15px 15px ;
+margin-left: 40px ;
 display: grid ;
 grid-template-columns: repeat(5, auto);
-@media screen and (max-width: 1250px){
-padding: 30px 0px 0px 0px;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-};
+
  `;
