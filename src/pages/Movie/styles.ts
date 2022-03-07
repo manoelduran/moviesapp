@@ -1,4 +1,3 @@
-import { darken } from "polished";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -8,10 +7,9 @@ background-color: ${({ theme }) => theme.black} ;
 `;
 
 export const Content = styled.div`
-width: 100%;
+width: 100% ;
 height: 100% ;
 display: flex;
-justify-content: space-between ;
 align-items: center;
 @media screen and (max-width: 450px){
   margin-top: 0rem;
@@ -22,6 +20,14 @@ justify-content: center;
 };
 `;
 
+export const Icon = styled.div`
+width: 100% ;
+ color: ${({ theme }) => theme.white_details};
+ font-size: 1.2rem;
+ padding-left: 10rem ;
+ text-align: left ;
+ cursor: pointer ;
+`;
 
 export const Info = styled.div`
 display: flex ;
@@ -48,19 +54,20 @@ width: 100% ;
 margin-top: 0.5rem ;
 display:  flex;
 align-items: center ;
-justify-content: space-around ;
+justify-content: center ;
 `;
 
 
 export const Details = styled.div`
 width: 60%;
+padding: 30px;
 `;
 
 
 export const Overview = styled.p`
-text-align:  center;
-font-size: 1rem;
-padding: 30px;
+text-align:  justify;
+line-height: 1.5rem ;
+font-size: 1.2rem;
 color: ${({ theme }) => theme.white_details};
 @media screen and (max-width: 800px){
   text-align: justify;
@@ -88,7 +95,7 @@ border-radius: 100% 30% 100% 30% ;
 export const Popularity = styled.span`
 width: 100% ;
  color: ${({ theme }) => theme.rate};
-
+ font-size: 1.2rem;
  padding-left: 10rem ;
  text-align: left ;
 `;
@@ -100,11 +107,14 @@ font-size: 1.2rem ;
 export const Language = styled.span`
 font-size: 1.2rem ;
  text-align: center;
+ padding-left: 15px ;
 `;
 
 export const Trailer = styled.button`
 width: 30%;
 height: 50px ;
+margin-top: 15px ;
+padding: 30px;
 display: flex ;
 border-radius: 12px ;
 align-items: center ;

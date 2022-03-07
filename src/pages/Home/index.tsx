@@ -22,9 +22,7 @@ export function Home() {
     const navigate = useNavigate();
     const [search, setSearch] = useState('');
     async function fetchMovies(search: string) {
-
         try {
-
             setLoading(true);
             const response = await api.searchMovies(search);
             setMovies(response);
