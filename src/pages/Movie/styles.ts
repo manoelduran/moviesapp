@@ -1,8 +1,5 @@
 import styled from "styled-components";
 
-interface BackgroundImageProps {
-  imgUrl: string;
-}
 
 export const Container = styled.div`
 background-color: ${({ theme }) => theme.black} ;
@@ -28,7 +25,7 @@ export const Icon = styled.div`
 width: 100% ;
  color: ${({ theme }) => theme.white_details};
  font-size: 1.2rem;
- padding-left: 10rem ;
+ padding-left: 8rem ;
  text-align: left ;
  cursor: pointer ;
  @media screen and (max-width: 1900px){
@@ -36,18 +33,26 @@ width: 100% ;
 };
 @media screen and (max-width: 1700px){
   margin-bottom: 4rem ;
+  padding-left: 6rem ;
 };
 @media screen and (max-width: 1450px){
   margin-bottom: 3rem ;
+  padding-left: 4rem ;
+};
+@media screen and (max-width: 1250px){
+  text-align:  justify;
+line-height: 1.5rem ;
+font-size: 1rem;
+padding-left: 2rem ;
 };
 @media screen and (max-width: 1000px){
   padding-left: 4rem ;
 };
 @media screen and (max-width: 850px){
-  padding-left: 2rem ;
+  padding-left: 1rem ;
 };
 @media screen and (max-width: 780px){
-  padding-left: 1.5rem ;
+  padding-left: 1rem ;
 };
 @media screen and (max-width: 600px){
 padding-top: 1rem ;
@@ -60,7 +65,7 @@ flex-direction: column ;
 align-items: center ;
 justify-content: space-between ;
 @media screen and (max-width: 700px){
-  height: 100vh ;
+
   display: flex ;
 flex-direction: column ;
 align-items: center ;
@@ -136,7 +141,7 @@ width: 100% ;
 margin-top: 0.5rem ;
 display:  flex;
 align-items: center ;
-justify-content: center ;
+justify-content: space-between ;
 `;
 
 
@@ -203,6 +208,10 @@ height: 100vh;
 width: 100% ;
 border-radius: 100% 30% 100% 30% ;
 
+@media screen and (max-width: 1230px){
+  width: 50% ;
+};
+
 @media screen and (max-width: 950px){
   border-radius: 0%;
   width: 100% ;
@@ -215,42 +224,42 @@ border-radius: 100% 30% 100% 30% ;
 `;
 
 export const Popularity = styled.span`
-width: 100% ;
  color: ${({ theme }) => theme.rate};
  font-size: 1.2rem;
- padding-left: 10rem ;
  text-align: left ;
  @media screen and (max-width: 1900px){
-  text-align:  justify;
-line-height: 2rem ;
-font-size: 1.5rem;
+  line-height: 2rem ;
+text-align:  justify;
+font-size: 1.7rem;
 };
 @media screen and (max-width: 1700px){
   text-align:  justify;
-line-height: 1.5rem ;
-font-size: 1.5rem;
+  line-height: 1.8rem ;
+font-size: 1.7rem;
+
 };
 @media screen and (max-width: 1450px){
   text-align:  justify;
-line-height: 1.5rem ;
-font-size: 1rem;
+  line-height: 1.7rem ;
+font-size: 1.6rem;
 };
-@media screen and (max-width: 1200px){
-  text-align:  justify;
-line-height: 1.5rem ;
-font-size: 1rem;
-};
-@media screen and (max-width: 1000px){
-  padding-left: 4rem ;
+@media screen and (max-width: 1250px){
+margin-right: 0.5rem ;
 };
 @media screen and (max-width: 850px){
-  padding-left: 2rem ;
+  text-align:  justify;
+  line-height: 1.7rem ;
+font-size: 1.4rem;
 };
 @media screen and (max-width: 780px){
-  padding-left: 1.5rem ;
+  text-align:  justify;
+  line-height: 1.7rem ;
+font-size: 1.3rem;
 };
-@media screen and (max-width: 500px){
-padding-bottom: 1.5rem ;
+@media screen and (max-width: 400px){
+  text-align:  justify;
+  line-height: 1.5rem ;
+font-size: 1.1rem;
 };
 `;
 export const ReleaseDate = styled.span`
@@ -259,6 +268,7 @@ font-size: 1.2rem ;
  text-align: left ;
  @media screen and (max-width: 1900px){
 line-height: 2rem ;
+text-align:  justify;
 font-size: 1.7rem;
 };
 @media screen and (max-width: 1700px){
@@ -292,7 +302,8 @@ font-size: 1.2rem ;
  text-align: center;
  padding-left: 15px ;
  @media screen and (max-width: 1900px){
-line-height: 2rem ;
+  line-height: 2rem ;
+text-align:  justify;
 font-size: 1.7rem;
 };
 @media screen and (max-width: 1700px){
@@ -341,10 +352,15 @@ height: 80px ;
 @media screen and (max-width: 1000px){
   width: 40%;
 padding: 15px;
+  margin-top: 1rem ;
 };
 
 @media screen and (max-width: 440px){
   width: 50%;
+padding: 15px;
+};
+@media screen and (max-width: 362px){
+  width: 70%;
 padding: 15px;
 };
 `;

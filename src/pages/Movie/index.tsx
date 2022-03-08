@@ -54,19 +54,19 @@ export function Movie() {
                 <Content>
                     <Info>
                         <Icon>
-                        <FiX 
-                            size={30}
-                            onClick={handleGoBack}
-                        />
+                            <FiX
+                                size={30}
+                                onClick={handleGoBack}
+                            />
                         </Icon>
-                        <Popularity>
-                            {movie.popularity}
-                        </Popularity>
                         <NameContainer>
                             <Title>
                                 {movie.title}
                             </Title>
                             <DateInfo>
+                                <Popularity>
+                                    {movie.popularity}
+                                </Popularity>
                                 <ReleaseDate>
                                     {movie.release_date && new Intl.DateTimeFormat('pt-Br', { month: '2-digit', year: '2-digit' }).format(new Date(movie.release_date))}
                                 </ReleaseDate>
