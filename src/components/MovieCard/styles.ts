@@ -9,9 +9,6 @@ width: 220px;
 height: 330px;
 margin-top: 20px;
 background-image: url(${(props)=>props.imgUrl}); 
-  @media screen and (max-width: 520px){
-width: 75%;
-};
 `;
 
 export const ButtonCard = styled.a`

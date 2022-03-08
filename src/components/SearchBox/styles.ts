@@ -20,10 +20,19 @@ border: 1px solid ${({ theme }) => theme.border};
     align-items: center;
         color: ${({ theme }) => theme.black};
    };
-   @media screen and (max-width: 800px){
+   @media screen and (max-width: 900px){
     width: 600px;
 };
-@media screen and (max-width: 600px){
-    width: 100%;
+@media screen and (max-width: 750px){
+    width: 500px;
+};
+@media screen and (max-width: 580px){
+    width: 400px;
+};
+@media screen and (max-width: 450px){
+    width: 300px;
+};
+@media screen and (max-width: 350px){
+    width: 200px;
 };
 `;

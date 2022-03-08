@@ -37,5 +37,26 @@ export const Content = styled.div`
 height: 100% ;
 display: grid ;
 gap: 10px ;
-grid-template-columns: repeat(5, auto);
+
+@media screen and (max-width: 1900px){
+  grid-template-columns: repeat(7, auto);
+};
+@media screen and (max-width: 1750px){
+  grid-template-columns: repeat(6, auto);
+};
+@media screen and (max-width: 1550px){
+  grid-template-columns: repeat(5, auto);
+};
+@media screen and (max-width: 1250px){
+  grid-template-columns: repeat(4, auto);
+};
+@media screen and (max-width: 1050px){
+  grid-template-columns: repeat(3, auto);
+};
+@media screen and (max-width: 750px){
+  grid-template-columns: repeat(2, auto);
+};
+@media screen and (max-width: 550px){
+  grid-template-columns: repeat(1, auto);
+};
  `;
