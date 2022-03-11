@@ -22,6 +22,10 @@ import {
 import { useTheme } from 'styled-components';
 import { Loading } from '../../components/Loading';
 
+interface MovieParams {
+    id: string;
+};
+
 export function Movie() {
     const { id } = useParams() as unknown as MovieParams;
     const [movie, setMovie] = useState<Movie>({} as Movie);

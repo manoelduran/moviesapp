@@ -9,6 +9,4 @@ interface Movie {
     release_date: string;
 };
 
-interface MovieParams {
-    id: string;
-};
+
