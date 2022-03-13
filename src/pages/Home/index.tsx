@@ -24,10 +24,10 @@ const Home: React.FC = () => {
     React.useEffect(() => {
         if (store.search.length > 0) {
             return store.dispose
-        }  else {
+        } else {
             store.fetchMovies(store.instaSearch)
         }
-    }, [store, store.instaSearch]);
+    }, [store]);
     return (
         <Container>
             <Header>

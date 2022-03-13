@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FiChevronRight, FiX } from "react-icons/fi";
 import {
@@ -20,40 +20,27 @@ import {
 } from './styles';
 import { useTheme } from 'styled-components';
 import Loading from '../../components/Loading';
-import * as types from '../../declarations/types';
-import * as api from '../../services/api';
+import { observer, useLocalObservable } from 'mobx-react-lite';
+import { Store } from '../Home/store';
 
 interface MovieParams {
     id: string;
 };
 
-export function Movie() {
+const Movie: React.FC = () => {
+    const store = useLocalObservable(() => new Store());
     const { id } = useParams() as unknown as MovieParams;
-    const [movie, setMovie] = useState<types.Movie>({} as types.Movie);
-    const [loading, setLoading] = useState(false);
     const theme = useTheme();
     const navigate = useNavigate();
-    async function fetchMovie(id: string) {
-        try {
-            setLoading(true);
-            const result = await api.default.searchMovie(id);
-            setMovie(result);
-        } catch (err) {
-            return console.log(err);
-        } finally {
-            setLoading(false);
-        };
-    }
     function handleGoBack() {
-        navigate(-1)
-    }
-    useEffect(() => {
-        fetchMovie(id);
-
-    }, [id])
+        navigate(-1);
+    };
+    React.useEffect(() => {
+        store.fetchMovie(id);
+    }, [store, id]);
     return (
         <Container>
-            {loading ?
+            {store.loading ?
                 <Loading />
                 :
                 <Content>
@@ -66,23 +53,23 @@ export function Movie() {
                         </Icon>
                         <NameContainer>
                             <Title>
-                                {movie.title}
+                                {store.movie.title}
                             </Title>
                             <DateInfo>
                                 <Popularity>
-                                    {movie.popularity}
+                                    {store.movie.popularity}
                                 </Popularity>
                                 <ReleaseDate>
-                                    {movie.release_date && new Intl.DateTimeFormat('pt-Br', { month: '2-digit', year: '2-digit' }).format(new Date(movie.release_date))}
+                                    {store.movie.release_date && new Intl.DateTimeFormat('pt-Br', { month: '2-digit', year: '2-digit' }).format(new Date(store.movie.release_date))}
                                 </ReleaseDate>
                                 <Language>
-                                    {movie.original_language}
+                                    {store.movie.original_language}
                                 </Language>
                             </DateInfo>
                         </NameContainer>
                         <Details>
                             <Overview>
-                                {movie.overview}
+                                {store.movie.overview}
                             </Overview>
                             <Trailer onClick={() => { }}>
                                 <ButtonText>Watch Now</ButtonText>
@@ -90,9 +77,10 @@ export function Movie() {
                             </Trailer>
                         </Details>
                     </Info>
-                    <Poster src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
+                    <Poster src={`https://image.tmdb.org/t/p/original/${store.movie.poster_path}`} />
                 </Content>
             }
         </Container>
     );
 };
+export default observer(Movie);
