@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FiChevronRight, FiX } from "react-icons/fi";
-import { searchMovie } from '../../services/api';
 import {
     Container,
     Title,
@@ -20,7 +19,9 @@ import {
     Icon
 } from './styles';
 import { useTheme } from 'styled-components';
-import { Loading } from '../../components/Loading';
+import Loading from '../../components/Loading';
+import * as types from '../../declarations/types';
+import * as api from '../../services/api';
 
 interface MovieParams {
     id: string;
@@ -28,14 +29,14 @@ interface MovieParams {
 
 export function Movie() {
     const { id } = useParams() as unknown as MovieParams;
-    const [movie, setMovie] = useState<Movie>({} as Movie);
+    const [movie, setMovie] = useState<types.Movie>({} as types.Movie);
     const [loading, setLoading] = useState(false);
     const theme = useTheme();
     const navigate = useNavigate();
     async function fetchMovie(id: string) {
         try {
             setLoading(true);
-            const result = await searchMovie(id);
+            const result = await api.default.searchMovie(id);
             setMovie(result);
         } catch (err) {
             return console.log(err);

@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import { Container, Input } from './styles';
 
 
@@ -7,23 +8,13 @@ interface SearchBoxProps {
   onChange: (event: string) => void;
 };
 
-export function SearchBox({ value, onChange }: SearchBoxProps) {
+const SearchBox: React.FC<SearchBoxProps> = ({ value, onChange }) => {
   const [displayValue, setDisplayValue] = useState(value);
-
-  function Debounce(fn: Function, ms: number) {
-    const timeoutId = useRef<number | null>(null);
-    function debouncedFn(...args: any[]) {
-      window.clearTimeout(timeoutId.current as unknown as number);
-      timeoutId.current = window.setTimeout(() => fn(...args), ms);
-    };
-    return debouncedFn;
-  };
-
-  const debounceChange = Debounce(onChange, 2000);
-
-  function handleSearchBox(event: any) {
-    setDisplayValue(event.target.value);
-    debounceChange(event.target.value);
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDisplayValue(event.target.value)
+    setTimeout(() => {
+      setTimeout(() => onChange(event.target.value), 2000)
+    }, 2000)
   };
 
   return (
@@ -32,8 +23,10 @@ export function SearchBox({ value, onChange }: SearchBoxProps) {
         value={displayValue}
         placeholder="Search for a movie..."
         type="text"
-        onChange={handleSearchBox}
+        onChange={handleSearch}
       />
     </Container>
   );
 };
+
+export default observer(SearchBox);

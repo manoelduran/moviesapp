@@ -1,7 +1,8 @@
 import React from 'react';
+import * as types from '../../declarations/types';
+import { observer } from 'mobx-react-lite';
 import {
   Container,
-  Title,
   ButtonCard,
   Details,
   Description,
@@ -9,11 +10,11 @@ import {
 } from './styles';
 
 interface MovieCardProps {
-  data: Movie;
+  data: types.Movie;
   onClick: () => void;
 };
 
-export function MovieCard({ data, onClick }: MovieCardProps) {
+const MovieCard: React.FC<MovieCardProps> = ({ data, onClick }) => {
   return (
     <Container imgUrl={`https://image.tmdb.org/t/p/w220_and_h330_face${data.poster_path}`}  >
       <ButtonCard onClick={onClick}>
@@ -21,9 +22,10 @@ export function MovieCard({ data, onClick }: MovieCardProps) {
           <DescriptionContainer>
             <Description>{data.popularity} </Description>
           </DescriptionContainer>
-          {/* <Title>{data.title}</Title> */}
         </Details>
       </ButtonCard>
     </Container>
   );
 };
+
+export default observer(MovieCard);

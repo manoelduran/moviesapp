@@ -21,16 +21,6 @@ display: flex;
 flex-direction: column;
 justify-content: space-between ;
 `;
-export const Title = styled.h1`
-width:100%;
-font-size: 1.5rem;
-align-self: left ;
-text-align: left;
-color: ${({ theme }) => theme.white_details};
-`;
-
-
-
 export const DescriptionContainer = styled.div`
 width: 100%;
 display: flex;
