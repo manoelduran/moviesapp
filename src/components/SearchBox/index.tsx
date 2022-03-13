@@ -10,20 +10,28 @@ interface SearchBoxProps {
 
 const SearchBox: React.FC<SearchBoxProps> = ({ value, onChange }) => {
   const [displayValue, setDisplayValue] = useState(value);
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDisplayValue(event.target.value)
-    setTimeout(() => {
-      setTimeout(() => onChange(event.target.value), 2000)
-    }, 2000)
+  function Debounce(fn: Function, ms: number) {
+    const timeoutId = useRef<number | null>(null);
+    function debouncedFn(...args: any[]) {
+      window.clearTimeout(timeoutId.current as unknown as number);
+      timeoutId.current = window.setTimeout(() => fn(...args), ms);
+    };
+    return debouncedFn;
   };
 
+  const debounceChange = Debounce(onChange, 2000);
+
+  function handleSearchBox(event: any) {
+    setDisplayValue(event.target.value);
+    debounceChange(event.target.value);
+  };
   return (
     <Container>
       <Input
         value={displayValue}
         placeholder="Search for a movie..."
         type="text"
-        onChange={handleSearch}
+        onChange={handleSearchBox}
       />
     </Container>
   );

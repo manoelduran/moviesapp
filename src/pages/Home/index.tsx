@@ -12,14 +12,22 @@ import {
     Content,
     ContentContainer
 } from './styles';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const Home: React.FC = () => {
     const store = useLocalObservable(() => new Store());
+    const navigate = useNavigate();
+    function handleSelectedMovie(movie: types.Movie) {
+        navigate(`/${String(movie.id)}`);
+    }
     React.useEffect(() => {
-        return store.dispose
-    }, [store.searchDisposer]);
+        if (store.search.length > 0) {
+            return store.dispose
+        }  else {
+            store.fetchMovies(store.instaSearch)
+        }
+    }, [store, store.instaSearch]);
     return (
         <Container>
             <Header>
@@ -38,7 +46,7 @@ const Home: React.FC = () => {
                             <MovieCard
                                 data={movie}
                                 key={movie.id}
-                                onClick={() => { }}
+                                onClick={() => handleSelectedMovie(movie)}
                             />
                         ))}
                     </Content>

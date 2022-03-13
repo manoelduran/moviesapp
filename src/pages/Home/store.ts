@@ -1,7 +1,6 @@
 import { makeAutoObservable, IReactionDisposer, reaction } from "mobx";
-import { useNavigate } from "react-router-dom";
 import * as types from '../../declarations/types';
-import  api from '../../services/api';
+import api from '../../services/api';
 
 export class Store {
     public searchDisposer: IReactionDisposer;
@@ -9,15 +8,16 @@ export class Store {
         makeAutoObservable(this);
         this.searchDisposer = reaction(
             () => this.search,
-            () => this.fetchMovies(),
-        );
+            () => this.fetchMovies(this.search),
+        )
     };
-    // public navigate = useNavigate();
+
     public movies: types.Movie[] = [];
     public loading: boolean = false;
     public search: string = '';
+    public instaSearch: string = 'Batman';
     public setSearch(search: string) {
-        this.search = search;
+        return this.search = search;
     };
     public setMovies(movies: types.Movie[]) {
         this.movies = movies;
@@ -26,14 +26,10 @@ export class Store {
     public setLoading(loading: boolean) {
         this.loading = loading;
     };
-  
-    public handleSelectedMovie = (movie: types.Movie) => {
-        // this.navigate(`/${String(movie.id)}`);
-    }
-    public fetchMovies = async () => {
+    public fetchMovies = async (search: string) => {
         try {
             this.setLoading(true);
-            const response = await api.searchMovies(this.search);
+            const response = await api.searchMovies(search);
             this.setMovies(response);
         } catch (error) {
             console.log(error);
@@ -43,8 +39,5 @@ export class Store {
     };
     public dispose() {
         this.searchDisposer?.();
-    }
-    public get isSearch() {
-        return this.search.includes("Batman")
     }
 };
