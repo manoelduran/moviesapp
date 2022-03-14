@@ -31,7 +31,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ value, onChange }) => {
       marginTop='2.5rem'
     >
       <Input
-        w={[270, 400, 500, 600]}
+        w={[270, 400, 500, 600, 800]}
         height='40px'
         display='flex'
         borderRadius='5px'
@@ -41,9 +41,9 @@ const SearchBox: React.FC<SearchBoxProps> = ({ value, onChange }) => {
         color={theme.colors.black}
         border='1px'
         borderBlockStartStyle='solid'
-        borderBottomColor={theme.colors.border} 
+        borderBottomColor={theme.colors.border}
         value={displayValue}
-        _placeholder={{ color: theme.colors.black}}
+        _placeholder={{ color: theme.colors.black }}
         placeholder="Search for a movie..."
         type="text"
         onChange={handleSearchBox}
