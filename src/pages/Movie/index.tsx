@@ -73,7 +73,7 @@ const Movie: React.FC = () => {
                             </Overview>
                             <Trailer onClick={() => { }}>
                                 <ButtonText>Watch Now</ButtonText>
-                                <FiChevronRight size={30} color={theme.white_details} />
+                                {/* <FiChevronRight size={30} color={theme.white_details} /> */}
                             </Trailer>
                         </Details>
                     </Info>
