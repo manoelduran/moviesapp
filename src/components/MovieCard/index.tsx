@@ -1,13 +1,7 @@
 import React from 'react';
 import * as types from '../../declarations/types';
 import { observer } from 'mobx-react-lite';
-import {
-  Container,
-  ButtonCard,
-  Details,
-  Description,
-  DescriptionContainer,
-} from './styles';
+import { Flex, Link, Text, useTheme } from '@chakra-ui/react';
 
 interface MovieCardProps {
   data: types.Movie;
@@ -15,17 +9,31 @@ interface MovieCardProps {
 };
 
 const MovieCard: React.FC<MovieCardProps> = ({ data, onClick }) => {
+  const theme = useTheme();
   return (
-    <Container imgUrl={`https://image.tmdb.org/t/p/w220_and_h330_face${data.poster_path}`}  >
-      <ButtonCard onClick={onClick}>
-        <Details>
-          <DescriptionContainer>
-            <Description>{data.popularity} </Description>
-          </DescriptionContainer>
-        </Details>
-      </ButtonCard>
-    </Container>
+    <Flex
+      w='220px'
+      height='330px'
+      backgroundImage={`https://image.tmdb.org/t/p/w220_and_h330_face${data.poster_path}`}
+    >
+      <Link
+        w='100%'
+        h='100%'
+        cursor='default'
+        onClick={onClick}>
+        <Flex
+          w='100%'
+          flexDirection='column'
+        >
+          <Text
+            fontSize='1.2rem'
+            color={theme.colors.rate}
+          >
+            {data.popularity}
+          </Text>
+        </Flex>
+      </Link>
+    </Flex>
   );
 };
-
 export default observer(MovieCard);

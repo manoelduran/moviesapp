@@ -18,10 +18,10 @@ import {
     ButtonText,
     Icon
 } from './styles';
-import { useTheme } from 'styled-components';
 import Loading from '../../components/Loading';
 import { observer, useLocalObservable } from 'mobx-react-lite';
 import { Store } from '../Home/store';
+import theme from '../../styles/global';
 
 interface MovieParams {
     id: string;
@@ -30,7 +30,6 @@ interface MovieParams {
 const Movie: React.FC = () => {
     const store = useLocalObservable(() => new Store());
     const { id } = useParams() as unknown as MovieParams;
-    const theme = useTheme();
     const navigate = useNavigate();
     function handleGoBack() {
         navigate(-1);
@@ -73,7 +72,7 @@ const Movie: React.FC = () => {
                             </Overview>
                             <Trailer onClick={() => { }}>
                                 <ButtonText>Watch Now</ButtonText>
-                                {/* <FiChevronRight size={30} color={theme.white_details} /> */}
+                                <FiChevronRight size={30} color={theme.white_details} />
                             </Trailer>
                         </Details>
                     </Info>

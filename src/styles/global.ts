@@ -1,4 +1,4 @@
-import { extendTheme, useTheme } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 const overrides = {
   colors: {
     black: 'black',
@@ -17,6 +17,10 @@ const overrides = {
     hover_gray_medium: '#7E7E86',
     hover_gray_light: '#CECECE',
     red: 'red'
+  },
+  fonts: {
+    heading: 'Roboto',
+    body: 'Roboto'
   },
   styles: {
     global: {
@@ -41,9 +45,6 @@ const overrides = {
       'button': {
         cursor: 'pointer',
       },
-      'a': {
-        textDecoration: 'none',
-      }
     },
   }
 };
