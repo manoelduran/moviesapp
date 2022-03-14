@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Container, Input } from './styles';
+import { Flex, Input, useTheme } from '@chakra-ui/react';
 
 
 interface SearchBoxProps {
@@ -10,6 +10,7 @@ interface SearchBoxProps {
 
 const SearchBox: React.FC<SearchBoxProps> = ({ value, onChange }) => {
   const [displayValue, setDisplayValue] = useState(value);
+  const theme = useTheme();
   function Debounce(fn: Function, ms: number) {
     const timeoutId = useRef<number | null>(null);
     function debouncedFn(...args: any[]) {
@@ -26,14 +27,28 @@ const SearchBox: React.FC<SearchBoxProps> = ({ value, onChange }) => {
     debounceChange(event.target.value);
   };
   return (
-    <Container>
+    <Flex
+      marginTop='2.5rem'
+    >
       <Input
+        w={[270, 400, 500, 600]}
+        height='40px'
+        display='flex'
+        borderRadius='5px'
+        alignItems='center'
+        justifyContent='center'
+        background={theme.colors.white_details}
+        color={theme.colors.black}
+        border='1px'
+        borderBlockStartStyle='solid'
+        borderBottomColor={theme.colors.border} 
         value={displayValue}
+        _placeholder={{ color: theme.colors.black}}
         placeholder="Search for a movie..."
         type="text"
         onChange={handleSearchBox}
       />
-    </Container>
+    </Flex>
   );
 };
 
