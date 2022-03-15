@@ -117,7 +117,7 @@ const Movie: React.FC = () => {
                                 display='flex'
                                 alignItems='center'
                                 justifyContent='center'
-                                backgroundColor={theme.colors.hover_purple}
+                                backgroundColor={theme.colors.red}
                                 borderRadius='12px'
                                 onClick={() => { }}
                             >

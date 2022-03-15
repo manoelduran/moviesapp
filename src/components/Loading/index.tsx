@@ -15,7 +15,7 @@ const Loading: React.FC = () => {
       <Text
         fontSize='2rem'
         textAlign='center'
-        color={theme.colors.rate}
+        color={theme.colors.red}
       >
         Loading...
       </Text>

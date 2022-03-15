@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Flex, Input, useTheme } from '@chakra-ui/react';
+import { Flex, Input, useMediaQuery, useTheme } from '@chakra-ui/react';
 
 
 interface SearchBoxProps {
@@ -31,7 +31,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ value, onChange }) => {
       marginTop='2.5rem'
     >
       <Input
-        w={[270, 400, 500, 600, 800]}
+        w={[250, 400, 500, 600, 800]}
         height='40px'
         display='flex'
         borderRadius='5px'
