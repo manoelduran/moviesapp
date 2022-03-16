@@ -12,9 +12,9 @@ const SearchBox: React.FC<SearchBoxProps> = ({ value, onChange }) => {
 	const theme = useTheme();
 	const Debounce: any = (fn: any, ms: number) => {
 		const timeoutId = useRef<number | null>(null);
-		const debouncedFn: unknown = (...args: any[]) => {
+		const debouncedFn = (...args: any[]): void => {
 			window.clearTimeout(timeoutId.current as unknown as number);
-			timeoutId.current = window.setTimeout(() => fn(...args), ms);
+			timeoutId.current = window.setTimeout(()=> fn(...args), ms);
 		};
 		return debouncedFn;
 	};
