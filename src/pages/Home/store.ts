@@ -1,5 +1,5 @@
-import { IReactionDisposer, makeAutoObservable, reaction } from "mobx";
 import * as types from "../../declarations/types";
+import { IReactionDisposer, makeAutoObservable, reaction } from "mobx";
 import api from "../../services/api";
 
 export class Store {
@@ -8,7 +8,7 @@ export class Store {
 		makeAutoObservable(this);
 		this.searchDisposer = reaction(
 			() => this.search,
-			() => this.fetchMovies(this.search),
+			(): void  => this.fetchMovies(this.search),
 		);
 	}
 	public movie: types.Movie = {} as types.Movie;
@@ -16,42 +16,41 @@ export class Store {
 	public loading = false;
 	public search = "";
 	public instaSearch = "Batman";
-	public setSearch(search: string) {
-		return this.search = search;
+	public setSearch(search: string): void {
+		this.search = search;
 	}
-	public setMovie(movie: types.Movie) {
+	public setMovie(movie: types.Movie): void {
 		this.movie = movie;
 	}
-	public setMovies(movies: types.Movie[]) {
+	public setMovies(movies: types.Movie[]): void {
 		this.movies = movies;
 	}
 
-	public setLoading(loading: boolean) {
+	public setLoading(loading: boolean): void {
 		this.loading = loading;
 	}
-	public fetchMovies = async (search: string) => {
+	public fetchMovies: (search: string) => void = async (search: string): Promise<void> => {
 		try {
 			this.setLoading(true);
 			const response = await api.searchMovies(search);
 			this.setMovies(response);
 		} catch (error) {
-			console.log(error);
 		} finally {
 			this.setLoading(false);
 		}
 	};
-	public fetchMovie = async (id: string) => {
+	public fetchMovie: (id: string) => void  = async (id: string): Promise<void> => {
 		try {
 			this.setLoading(true);
 			const response = await api.searchMovie(id);
 			this.setMovie(response);
-		} catch (err) {
-			return console.log(err);
+		} catch (error) {
+			return console.log(error);
 		} finally {
 			this.setLoading(false);
 		}
 	};
-	public dispose() {
+	public dispose = (): void => {
 		this.searchDisposer?.();
-	}
+	};
 }

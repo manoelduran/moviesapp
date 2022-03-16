@@ -14,7 +14,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ value, onChange }) => {
 		const timeoutId = useRef<number | null>(null);
 		const debouncedFn = (...args: any[]): void => {
 			window.clearTimeout(timeoutId.current as unknown as number);
-			timeoutId.current = window.setTimeout(()=> fn(...args), ms);
+			timeoutId.current = window.setTimeout(() => fn(...args), ms);
 		};
 		return debouncedFn;
 	};

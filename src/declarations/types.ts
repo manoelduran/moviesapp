@@ -9,6 +9,10 @@ export interface Movie {
 	release_date: string;
 }
 
+export interface getMovie{
+	results: Movie[];
+}
+
 export interface MovieParams {
 	id: string;
 }
