@@ -15,7 +15,7 @@ const Movie: React.FC = () => {
 	const theme = useTheme();
 	const { id } = useParams() as unknown as types.MovieParams;
 	const navigate = useNavigate();
-	const handleGoBack =(): void => {
+	const handleGoBack = (): void => {
 		navigate(-1);
 	};
 	React.useEffect(() => {
@@ -123,7 +123,7 @@ const Movie: React.FC = () => {
 									fontSize="1.2rem"
 									color={theme.colors.white_details}
 								>
-                                    Watch Now
+									Watch Now
 								</Text>
 								<FiChevronRight size={30} color={theme.colors.white_details} />
 							</Button>

@@ -16,10 +16,9 @@ const Home: React.FC = () => {
 		navigate(`/${String(movie.id)}`);
 	};
 	React.useEffect(() => {
-		if (store.search.length > 0) {
+		store.fetchMovies(store.instaSearch);
+		if (store.search === store.movie.title) {
 			return store.dispose;
-		} else {
-			store.fetchMovies(store.instaSearch);
 		}
 	}, [store]);
 	return (

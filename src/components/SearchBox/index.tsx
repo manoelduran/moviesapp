@@ -18,10 +18,9 @@ const SearchBox: React.FC<SearchBoxProps> = ({ value, onChange }) => {
 		};
 		return debouncedFn;
 	};
-
 	const debounceChange = Debounce(onChange, 2000);
 
-	const handleSearchBox: any = (event: ChangeEvent<HTMLInputElement>) => {
+	const handleSearchBox = (event: ChangeEvent<HTMLInputElement>): void => {
 		setDisplayValue(event.target.value);
 		debounceChange(event.target.value);
 	};

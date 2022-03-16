@@ -1,5 +1,5 @@
 import * as types from "../declarations/types";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 class API {
 	private base;
@@ -9,7 +9,7 @@ class API {
 		});
 	}
 	public async searchMovies(search: string): Promise<types.Movie[]> {
-		const result: AxiosResponse<types.getMovie> = await this.base.get<types.getMovie>(`/search/movie?api_key=dcd18f60cd807761c94c7adc69c77537&query=${search}`);
+		const result = await this.base.get<types.getMovie>(`/search/movie?api_key=dcd18f60cd807761c94c7adc69c77537&query=${search}`);
 		return result.data.results;
 	}
 	public async searchMovie(id: string): Promise<types.Movie> {

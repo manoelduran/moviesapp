@@ -8,7 +8,7 @@ export class Store {
 		makeAutoObservable(this);
 		this.searchDisposer = reaction(
 			() => this.search,
-			(): void  => this.fetchMovies(this.search),
+			(): void => this.fetchMovies(this.search),
 		);
 	}
 	public movie: types.Movie = {} as types.Movie;
@@ -34,18 +34,21 @@ export class Store {
 			this.setLoading(true);
 			const response = await api.searchMovies(search);
 			this.setMovies(response);
-		} catch (error) {
+		} catch (error: unknown) {
+			const consoleError = error as Error;
+			throw new Error(`Error: ${consoleError.message} as string`);
 		} finally {
 			this.setLoading(false);
 		}
 	};
-	public fetchMovie: (id: string) => void  = async (id: string): Promise<void> => {
+	public fetchMovie = async (id: string): Promise<void> => {
 		try {
 			this.setLoading(true);
 			const response = await api.searchMovie(id);
 			this.setMovie(response);
-		} catch (error) {
-			return console.log(error);
+		} catch (error: unknown) {
+			const consoleError = error as Error;
+			throw new Error(`Error: ${consoleError.message} as string`);
 		} finally {
 			this.setLoading(false);
 		}
