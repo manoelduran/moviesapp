@@ -10,15 +10,15 @@ interface SearchBoxProps {
 const SearchBox: React.FC<SearchBoxProps> = ({ value, onChange }) => {
 	const [displayValue, setDisplayValue] = useState<string>(value);
 	const theme = useTheme();
-	const Debounce: any = (fn: any, ms: number) => {
+	const Debounce = (fn: (event: string) => void, ms: number): (() => void) => {
 		const timeoutId = useRef<number | null>(null);
-		const debouncedFn = (...args: any[]): void => {
+		const debouncedFn = (): void => {
 			window.clearTimeout(timeoutId.current as unknown as number);
-			timeoutId.current = window.setTimeout(() => fn(...args), ms);
+			timeoutId.current = window.setTimeout(() => fn(displayValue), ms);
 		};
 		return debouncedFn;
 	};
-	const debounceChange = Debounce(onChange, 2000);
+	const debounceChange: (event: string) => void = Debounce(onChange, 2000);
 
 	const handleSearchBox = (event: ChangeEvent<HTMLInputElement>): void => {
 		setDisplayValue(event.target.value);
