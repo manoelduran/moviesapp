@@ -15,9 +15,13 @@ export class Store {
 	public movies: types.Movie[] = [] as types.Movie[];
 	public loading = false;
 	public search = "";
+	public error = "";
 	public instaSearch = "Batman";
 	public setSearch(search: string): void {
 		this.search = search;
+	}
+	public setError(error: string): void {
+		this.error= error;
 	}
 	public setMovie(movie: types.Movie): void {
 		this.movie = movie;
@@ -34,9 +38,9 @@ export class Store {
 			this.setLoading(true);
 			const response = await api.searchMovies(search);
 			this.setMovies(response);
-		} catch (error: unknown) {
-			const consoleError = error as Error;
-			throw new Error(`Error: ${consoleError.message} as string`);
+		} catch (e: unknown) {
+			this.setError(e as string);
+			throw new Error(`Error: ${this.error} as string`);
 		} finally {
 			this.setLoading(false);
 		}
@@ -46,9 +50,9 @@ export class Store {
 			this.setLoading(true);
 			const response = await api.searchMovie(id);
 			this.setMovie(response);
-		} catch (error: unknown) {
-			const consoleError = error as Error;
-			throw new Error(`Error: ${consoleError.message} as string`);
+		} catch (e: unknown) {
+			this.setError(e as string);
+			throw new Error(`Error: ${this.error} as string`);
 		} finally {
 			this.setLoading(false);
 		}

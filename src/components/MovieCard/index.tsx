@@ -40,7 +40,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, onClick }) => {
 					</Text>
 				</Flex>
 			</Link>
-		</Flex>
+		</Flex >
 	);
 };
 export default observer(MovieCard);

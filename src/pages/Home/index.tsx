@@ -1,6 +1,7 @@
 import * as types from "../../declarations/types";
 import { Flex, Grid, Text, useTheme } from "@chakra-ui/react";
 import { observer, useLocalObservable } from "mobx-react-lite";
+import Error from "../../components/Error";
 import Loading from "../../components/Loading";
 import MovieCard from "../../components/MovieCard";
 import React from "react";
@@ -55,20 +56,27 @@ const Home: React.FC = () => {
 				justifyContent="center"
 			>
 				{store.loading ? <Loading /> :
-					<Grid
-						h="100%"
-						gap="10px"
-						textDecoration="none"
-						templateColumns={["repeat(1,auto)", "repeat(2,auto)", "repeat(3,auto)", "repeat(4,auto)", "repeat(5,auto)", "repeat(6,auto)", "repeat(7,auto)"]}
-					>
-						{store.movies.map((movie: types.Movie) => (
-							<MovieCard
-								data={movie}
-								key={movie.id}
-								onClick={() => handleSelectedMovie(movie)}
-							/>
-						))}
-					</Grid>
+					<>
+						{store.movies.length > 0 ?
+							<Grid
+								h="100%"
+								gap="10px"
+								textDecoration="none"
+								templateColumns={["repeat(1,auto)", "repeat(2,auto)", "repeat(3,auto)", "repeat(4,auto)", "repeat(5,auto)", "repeat(6,auto)", "repeat(7,auto)"]}
+							>
+								{store.movies.map((movie: types.Movie) => (
+									<MovieCard
+										data={movie}
+										key={movie.id}
+										onClick={() => handleSelectedMovie(movie)}
+									/>
+								))
+								}
+							</Grid>
+							:
+							<Error />
+						}
+					</>
 				}
 			</Flex>
 		</Flex>
@@ -76,3 +84,5 @@ const Home: React.FC = () => {
 };
 
 export default observer(Home);
+
+
